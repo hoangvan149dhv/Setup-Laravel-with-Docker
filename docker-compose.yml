@@ -28,7 +28,7 @@ services:
       - "8088:80"
     networks:
       - app-network
-  #MySQL Service
+  # MySQL Service
   # HOST
   mysql:
     image: mariadb:10.5
