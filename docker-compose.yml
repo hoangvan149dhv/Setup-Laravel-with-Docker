@@ -1,0 +1,67 @@
+version: '3'
+services:
+  #PHP Service
+  php:
+    build:
+      context: .
+    image: php
+    container_name: hoang-van-php
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./www:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx
+    container_name: hoang-van-webserver
+    volumes:
+      - ./www:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./logs/nginx:/var/log/nginx/
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8088:80"
+    networks:
+      - app-network
+  #MySQL Service
+  # HOST
+  mysql:
+    image: mariadb:10.5
+    container_name: hoang-van-mysql
+    restart: unless-stopped
+    command: mysqld --sql_mode="" --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    tty: true
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - app-network
+      
+  #Php myadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: 'phpmyadmin'
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - '8080:80'
+    volumes:
+      - /sessions
+    networks:
+      - app-network
+
+# #Docker Networks
+networks:
+  app-network:
+    driver: bridge
