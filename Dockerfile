@@ -45,7 +45,4 @@ USER www
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 
-# Composer install
-# Remove cache
-# Run php-fpm
-CMD composer install; ./rm-cache.sh; php-fpm;
+CMD ./laravel.sh;
