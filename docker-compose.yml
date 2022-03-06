@@ -25,7 +25,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "8088:80"
+      - "80:80"
     networks:
       - app-network
   # MySQL Service
@@ -37,7 +37,7 @@ services:
     command: mysqld --sql_mode="" --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     tty: true
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./logs/mysql:/var/log/mysql
@@ -46,7 +46,7 @@ services:
     networks:
       - app-network
       
-  #Php myadmin
+  #PHP Myadmin
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: 'phpmyadmin'

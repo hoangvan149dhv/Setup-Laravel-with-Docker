@@ -2,4 +2,4 @@
 /.vscode
 /data/*
 /logs/*
-/www/**
+/www/vendor
