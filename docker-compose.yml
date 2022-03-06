@@ -22,6 +22,8 @@ services:
       - ./www:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - ./logs/nginx:/var/log/nginx/
+    depends_on:
+      - php
     restart: unless-stopped
     tty: true
     ports:
