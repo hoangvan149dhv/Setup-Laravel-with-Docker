@@ -16,7 +16,7 @@ services:
 
   #Nginx Service
   webserver:
-    image: nginx
+    image: nginx:alpine
     container_name: hoang-van-webserver
     volumes:
       - ./www:/var/www
