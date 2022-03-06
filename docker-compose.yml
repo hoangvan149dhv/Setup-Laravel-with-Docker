@@ -58,8 +58,6 @@ services:
       PMA_PORT: 3306
     ports:
       - '8080:80'
-    volumes:
-      - /sessions
     networks:
       - app-network
 

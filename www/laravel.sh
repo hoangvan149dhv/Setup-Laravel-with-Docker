@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
+composer create-project --prefer-dist laravel/laravel laravel "5.8.*"
+
 # Create env
 cp ./.env.example ./.env
 
 # composer install
+cd laravel
+
 composer install
 
 # Generate key
