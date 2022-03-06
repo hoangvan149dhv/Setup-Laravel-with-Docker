@@ -2,6 +2,7 @@
 /.vscode
 /data/*
 /logs/*
-/www/vendor
-/www/.env
-/www/composer.lock
+/www/
+
+#never ignore
+!www/laravel.sh
