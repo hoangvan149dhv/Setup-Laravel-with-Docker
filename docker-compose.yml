@@ -1,11 +1,12 @@
 version: '3'
 services:
-  #PHP Service
-  php:
+  #App Service
+  app:
     build:
       context: .
-    image: php
-    container_name: hoang-van-php
+      args:
+        NODE_VERSION: 12.18.3
+    container_name: app
     restart: unless-stopped
     tty: true
     volumes:
@@ -17,32 +18,33 @@ services:
   #Nginx Service
   webserver:
     image: nginx:alpine
-    container_name: hoang-van-webserver
+    container_name: webserver
     volumes:
       - ./www:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
-      - ./logs/nginx:/var/log/nginx/
+      - ./.docker/nginx:/var/log/nginx/
     depends_on:
-      - php
+      - app
     restart: unless-stopped
     tty: true
     ports:
       - "80:80"
     networks:
       - app-network
+
   # MySQL Service
-  # HOST
   mysql:
     image: mariadb:10.5
-    container_name: hoang-van-mysql
+    container_name: mysql
     restart: unless-stopped
     command: mysqld --sql_mode="" --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     tty: true
     ports:
       - "3306:3306"
     volumes:
-      - ./data/mysql:/var/lib/mysql
-      - ./logs/mysql:/var/log/mysql
+      - ./.docker/data/mysql:/var/lib/mysql
+      - ./.docker/log/mysql:/var/log/mysql
+    user: root
     environment:
       MYSQL_ROOT_PASSWORD: root
     networks:

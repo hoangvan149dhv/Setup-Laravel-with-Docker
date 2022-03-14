@@ -1,8 +1,9 @@
 /.history
 /.vscode
+/.docker
 /data/*
 /logs/*
 /www/
-
+.idea
 #never ignore
 !www/laravel.sh
