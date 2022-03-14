@@ -1,6 +1,6 @@
 # .dockerignore
 
-data/
+.docker/data
 www/
 
 # Other files and folder
