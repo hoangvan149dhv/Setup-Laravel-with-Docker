@@ -4,14 +4,12 @@ services:
   app:
     build:
       context: .
-      args:
-        PROJECT_NAME: "${PROJECT_NAME}"
     container_name: app
     restart: unless-stopped
     tty: true
     volumes:
       - ./www:/var/www/html
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
 
@@ -21,7 +19,7 @@ services:
     container_name: webserver
     volumes:
       - ./www:/var/www/html
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
       - ./.docker/nginx:/var/log/nginx/
     depends_on:
       - app
