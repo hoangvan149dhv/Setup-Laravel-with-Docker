@@ -4,14 +4,12 @@ services:
   app:
     build:
       context: .
-      args:
-        NODE_VERSION: 12.18.3
     container_name: app
     restart: unless-stopped
     tty: true
     volumes:
-      - ./www:/var/www
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./www:/var/www/html
+      - ./config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
 
@@ -20,8 +18,8 @@ services:
     image: nginx:alpine
     container_name: webserver
     volumes:
-      - ./www:/var/www
-      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./www:/var/www/html
+      - ./config/nginx/conf.d/:/etc/nginx/conf.d/
       - ./.docker/nginx:/var/log/nginx/
     depends_on:
       - app

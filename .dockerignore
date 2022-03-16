@@ -2,8 +2,3 @@
 
 .docker/data
 www/
-
-# Other files and folder
-
-#never ignore
-!www/laravel.sh
