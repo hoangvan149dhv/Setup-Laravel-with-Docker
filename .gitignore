@@ -5,5 +5,3 @@
 /logs/*
 /www/*
 .idea
-#never ignore
-!www/laravel.sh
