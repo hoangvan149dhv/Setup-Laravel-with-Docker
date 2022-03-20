@@ -19,8 +19,11 @@ if [ "$LARAVEL_VERSION" == "" ]; then
 fi
 
 cd html
-
-composer create-project --prefer-dist laravel/laravel $projectName "$laravelVersion"
+if [ -e $projectName ]; then
+	echo "Fail to create $projectName. Project $projectName already exists"
+else
+	composer create-project --prefer-dist laravel/laravel $projectName "$laravelVersion"
+fi
 
 # Run php-fpm
 php-fpm
