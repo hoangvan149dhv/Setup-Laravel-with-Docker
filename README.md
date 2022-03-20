@@ -33,6 +33,10 @@ sudo ./scripts/create-virtualhost.sh {your_domain} {your_project_in_path_www}
 - Check the service online at http://laravel.local/
 ![Screenshot from 2022-03-20 12-54-18](https://user-images.githubusercontent.com/64452682/159150132-28d24152-b07f-4942-bd48-29e1144c8186.png)
 
+## PHPMYADMIN
+- http://localhost:8080/
+- Username: root
+- Password: root
 ## Contact
 
 * Duong Hoang Van | [hoangvan149dhv@gmail.com](hoangvan149dhv@gmail.com)
