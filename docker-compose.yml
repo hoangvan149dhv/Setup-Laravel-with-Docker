@@ -9,7 +9,7 @@ services:
     tty: true
     volumes:
       - ./www:/var/www/html
-      - ./config/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./config/php/php.ini:/usr/local/etc/php/conf.d/php.ini
     expose:
       - "9000"
     networks:
