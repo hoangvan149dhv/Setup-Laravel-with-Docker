@@ -37,6 +37,8 @@ sudo ./scripts/create-virtualhost.sh {your_domain} {your_project_in_path_www}
 - http://localhost:8080/
 - Username: root
 - Password: root
+![Screenshot from 2022-03-20 13-11-53](https://user-images.githubusercontent.com/64452682/159150554-fdb5b6aa-c948-47d7-b1b8-135f690382ee.png)
+
 ## Contact
 
 * Duong Hoang Van | [hoangvan149dhv@gmail.com](hoangvan149dhv@gmail.com)
