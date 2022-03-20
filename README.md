@@ -1,4 +1,4 @@
-# Setup Laravel by Docker
+# Setup Laravel with Docker
 
 ## Step 1 (Option). Setup .env 
 - Open file `.env` change `PROJECT_NAME` to set project name (default `laravel_example`) and change version laravel `LARAVEL_VERSION`.
