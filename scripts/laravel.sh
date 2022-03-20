@@ -23,6 +23,12 @@ if [ -e $projectName ]; then
 	echo "Fail to create $projectName. Project $projectName already exists"
 else
 	composer create-project --prefer-dist laravel/laravel $projectName "$laravelVersion"
+	#Install dependencies node_module
+	cd $projectName
+	pwd
+	
+	npm install
+	npm run prod
 fi
 
 # Run php-fpm
