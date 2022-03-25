@@ -1,12 +1,8 @@
 /.history
 /.vscode
 /.docker
-/data/*
-/logs/*
 /www/*
 /config/nginx/conf.d/
 .idea
 
-#never ignore
-!www/laravel.sh
 !/config/nginx/conf.d/default.conf
