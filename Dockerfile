@@ -40,6 +40,9 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 COPY --chown=www:www ./scripts/laravel.sh /var/www
 COPY --chown=www:www ./.env /var/www
 
+# Change listen  127.0.0.1:9000 -> 9000
+RUN sed -i "s|;*listen\s*=\s*127.0.0.1:9000|listen = 9000|g" /usr/local/etc/php-fpm.d/www.conf
+
 # Change current user to www
 USER www
 
