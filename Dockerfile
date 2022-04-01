@@ -1,5 +1,4 @@
 FROM php:7.4-fpm
-
 # Set working directory
 WORKDIR /var/www
 
