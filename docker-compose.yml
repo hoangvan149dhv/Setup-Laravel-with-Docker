@@ -31,7 +31,28 @@ services:
       - "80:80"
     networks:
       - app-network
-
+  #elasticsearch
+  elasticsearch:
+    container_name: es-container
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
+    environment:
+      - xpack.security.enabled=false
+      - "discovery.type=single-node"
+    networks:
+      - app-network
+    restart: unless-stopped
+    ports:
+      - 9200:9200
+  kibana:
+    container_name: kb-container
+    image: docker.elastic.co/kibana/kibana:7.11.0
+    networks:
+      - app-network
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+    ports:
+      - 5601:5601
   # MySQL Service
   mysql:
     image: mariadb:10.5
@@ -52,12 +73,13 @@ services:
       
   #PHP Myadmin
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:5.1.1
     container_name: 'phpmyadmin'
     restart: unless-stopped
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
+      UPLOAD_LIMIT: 100M
     ports:
       - '8080:80'
     networks:
