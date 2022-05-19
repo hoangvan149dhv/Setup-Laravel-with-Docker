@@ -39,8 +39,9 @@ echo "
     error_log  /var/log/nginx/error.log;
     access_log /var/log/nginx/access.log;
     root /var/www/html/$dir/public;
+    client_max_body_size 21M;
+
     location ~ \.php$ {
-        client_max_body_size 21M;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         include /etc/nginx/fastcgi_params;
         fastcgi_pass app:9000;
