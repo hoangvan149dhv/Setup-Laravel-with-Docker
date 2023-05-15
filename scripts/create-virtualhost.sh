@@ -41,6 +41,13 @@ echo "
     root /var/www/html/$dir/public;
     client_max_body_size 21M;
 
+    # Prevent access to prefix .*
+    location ~ /\. {
+	 access_log off;
+	 log_not_found off; 
+	 deny all;
+    }
+
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         include /etc/nginx/fastcgi_params;
